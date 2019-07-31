@@ -6,6 +6,7 @@ COPY composer.lock composer.lock
 COPY RoboFile.php RoboFile.php
 COPY robo.yml robo.yml
 COPY run.sh run.sh
+COPY sparql-update.sh sparql-update.sh
 
 RUN composer --no-interaction install
 

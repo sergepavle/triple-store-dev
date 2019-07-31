@@ -30,3 +30,10 @@ else
   exec virtuoso-t +configfile /virtuoso.ini +wait +foreground
 fi
 
+RUN apt-get update && apt-get -y install cron
+COPY sparql-cron /etc/cron.d/sparql-cron
+RUN chmod 0644 /etc/cron.d/sparql-cron
+RUN crontab /etc/cron.d/sparql-cron
+RUN touch /var/log/cron.log
+CMD cron && tail -f /var/log/cron.log
+
